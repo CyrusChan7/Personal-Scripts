@@ -1,6 +1,7 @@
 import pyautogui as p
 import time
 import random
+import sys
 import os
 
 
@@ -10,15 +11,27 @@ class TyperacerAutoTyper:
         self._phrase_to_type = self.create_phrase_to_type()
 
     def create_phrase_to_type(self):
-        with open(self._file_of_phrase) as f:
-            phrase = f.readline()
-        return phrase
+        try:    # Success scenario
+            with open(self._file_of_phrase) as f:
+                phrase = f.readline()
+                phrase = phrase.strip()     # Remove unnecessary trailing and leading characters
+            return phrase
+        except FileNotFoundError:   # One of the most likely exceptions to occur
+            print(f"ERROR: File {self._file_of_phrase} does not exist. Exiting script in 5 seconds.")
+            time.sleep(5)
+            sys.exit()
 
     def type_phrase(self):
         print("The script will begin typing automatically in 5 seconds.")
         time.sleep(5)
         p.write(self._phrase_to_type, interval=random.uniform(0.071, 0.081))
-        print("Automatic typing has finished.")
+        print("\nAutomatic typing has finished successfully.\n\n\n")
+
+        # Print and update message dynamically
+        for i in range(5, 0, -1):
+            sys.stdout.write("\rScript will automatically exit in %i second(s)." % i)
+            sys.stdout.flush()
+            time.sleep(1)
 
 
 if __name__ == "__main__":

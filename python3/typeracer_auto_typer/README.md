@@ -30,6 +30,5 @@ I am NOT responsible for what you do with this script.
 
 
 #### **TODO:**
-- Add more error handling
-- Add more comments and documentation (Sphinx)
+- Add documentation (Sphinx)
 - Add `"` as a supported character to be typed 
