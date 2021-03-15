@@ -24,8 +24,10 @@ class AutoTyper:
     def type_phrase(self):
         print("The script will begin typing automatically in 5 seconds.")
         time.sleep(5)
+
+        print(f"\n\nPhrase to type: \n{self._phrase_to_type}")
         p.write(self._phrase_to_type, interval=random.uniform(0.071, 0.081))
-        print("\nAutomatic typing has finished successfully.\n\n\n")
+        print("\nAutomatic typing finished successfully.\n\n\n")
 
         # Print and update message dynamically
         for i in range(5, 0, -1):
