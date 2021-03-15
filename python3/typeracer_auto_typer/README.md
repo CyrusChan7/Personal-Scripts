@@ -31,4 +31,3 @@ I am NOT responsible for what you do with this script.
 
 #### **TODO:**
 - Add documentation (Sphinx)
-- Add `"` as a supported character to be typed 

@@ -12,8 +12,9 @@ class AutoTyper:
     def create_phrase_to_type(self):
         try:    # Success scenario
             with open(self._file_of_phrase) as f:
-                phrase = f.readline()
-                phrase = phrase.strip()     # Remove unnecessary trailing and leading characters
+                phrase = f.readline().strip()   # Remove unnecessary trailing and leading characters
+                phrase = phrase.replace('"', '\"')
+                #print(f"DEBUG - phrase is: {phrase}")
             return phrase
         except FileNotFoundError:   # One of the most likely exceptions to occur
             print(f"ERROR: File {self._file_of_phrase} does not exist. Exiting script in 5 seconds.")
