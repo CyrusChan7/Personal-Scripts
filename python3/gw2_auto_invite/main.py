@@ -10,7 +10,8 @@ if __name__ == "__main__":
     dir_name = os.path.dirname(abs_path)
     os.chdir(dir_name)
 
-    invite_people = InviteFriend("names.txt", 5)
+    invite_people = InviteFriend("names.txt", 3)
+    invite_people.focus_game_window()
     invite_people.invite_friends()
 
     # Print and update message dynamically
