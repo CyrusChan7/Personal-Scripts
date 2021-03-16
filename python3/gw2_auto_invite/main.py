@@ -1,12 +1,14 @@
 import pyautogui as p
 import pydirectinput as pdi # Use this library as pyautogui may not support older games
+from tqdm import tqdm
 import time
 import random
+import sys
 import os
 
 
 class InviteFriend:
-    def __init__(self, file_of_names, invite_count, start_delay):
+    def __init__(self, file_of_names, invite_count, start_delay=5):
         self._file_of_names = file_of_names
         self._list_of_names = self.create_list_of_names()
         self._invite_count = invite_count
@@ -30,21 +32,26 @@ class InviteFriend:
 
     def invite_person(self, name):
         pdi.press("enter")
-        natural_typing_delay = random.uniform(0.00001, 0.00005)
-        p.write(f"/squadinvite {name}", interval=natural_typing_delay)
+        #natural_typing_delay = random.uniform(0.00001, 0.00005)
+        p.write(f"/squadinvite {name}")
         pdi.press("enter")
 
     def focus_game_window(self, x=1000, y=500):
         p.click(x,y)
 
     def invite_friends(self):
-        print(f"Get ready, the script will begin inviting in {self._start_delay} seconds.")
+        print(f"Get ready, the script will begin inviting in {self._start_delay} seconds.\n\n")
         time.sleep(self._start_delay)
+
         self.focus_game_window()
-        for i in range(self._invite_count):
+        for i in tqdm(range(self._invite_count)):
+
+            # Select a random individual to invite
             random_name = random.randint(0, len(self._list_of_names) - 1)
             self.invite_person(self._list_of_names[random_name])
-        print("The script has finished inviting.")
+            print(f"\n\n{self._list_of_names[random_name]} has been invited.")
+
+        print("\n\nThe script has finished inviting.\n\n")
 
 
 if __name__ == "__main__":
@@ -53,5 +60,11 @@ if __name__ == "__main__":
     dir_name = os.path.dirname(abs_path)
     os.chdir(dir_name)
 
-    invite_people = InviteFriend("names.txt", 5, 3)
+    invite_people = InviteFriend("names.txt", 5)
     invite_people.invite_friends()
+
+    # Print and update message dynamically
+    for i in range(5, 0, -1):
+        sys.stdout.write("\rScript will automatically exit in %i second(s)." % i)
+        sys.stdout.flush()
+        time.sleep(1)
