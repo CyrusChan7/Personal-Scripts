@@ -9,24 +9,25 @@ I am NOT responsible for what you do with this script.
 
 #### **Usage:**  
 1. Open the `names.txt` file.
-2. Replace the existing names with the names of the people that you wish to invite.
-3. Run `main.py` as an administrator.
+2. Replace the existing names with the names of the people that you wish to invite. (**Note:** The format must remain the same, one name per line.)
+3. Save `names.txt` and close the file.
+4. Run `main.py` as an administrator.
 
-    **Note:** The format must remain the same, one name per line.
 
 
-#### **Programs required** (make sure to run as administrator as it involves interacting with another program):
+#### **Programs required:**
 - Python 3
 - Visual Studio Code (Optional)
 - Guild Wars 2
 
 
 #### **Python library dependencies:**
-- pyautogui
-- pydirectinput
+- pyautogui 0.9.52
+- pydirectinput 1.0.4
+- tqdm 4.59.0
+  
+You may choose to install the libraries all at the same time using the command `pip3 install -r requirements.txt`, or install them one by one manually.
 
 
-#### **TODO:**
-- Add more error handling
-- Add more comments and documentation (Sphinx)
-- Add random/ non-random invite toggle
+#### **To-do:**
+None currently, but I am always open to suggestions.
