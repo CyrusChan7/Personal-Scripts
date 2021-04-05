@@ -4,6 +4,8 @@ import os
 class TxtFile:
     def __init__(self, file_path):
         self._file_path = file_path
+        self._txt_file_names_record = []
+
 
     def display_directory_statistics(self):
         txt_file_names = []
@@ -24,6 +26,20 @@ class TxtFile:
 
         print(f"\nNames of the .txt files in this directory: {txt_file_names}")
 
+        self._txt_file_names_record = txt_file_names
+
+
+    def display_file_content(self, read_line_count=7):
+        # 5 may not be enough lines to understand the context of the file, 10 is too spammy in the console, 7 is good
+        for txt_file in self._txt_file_names_record:
+            with open(txt_file) as f:
+                head = f.readlines()[0:read_line_count]
+            #print(head)
+
+            print(f"\nFile contents in {txt_file}:\n")
+            for line in head:
+                print(line.strip()) 
+
 
 if __name__ == "__main__":
     # Change to directory where this Python script is located
@@ -33,3 +49,4 @@ if __name__ == "__main__":
 
     folder_cleanup = TxtFile(dir_name)
     folder_cleanup.display_directory_statistics()
+    folder_cleanup.display_file_content()
