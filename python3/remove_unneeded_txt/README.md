@@ -9,8 +9,10 @@ I am NOT responsible for what you do with this script.
 
 #### **Usage:**  
 1. Place `main.py` in the directory that you want to remove unneeded .txt files.
-2. Run `main.py` via typing `python main.py` in a command-line interpreter program like Windows PowerShell, or double-click the file `main.py`.
+2. Run `main.py` via typing `python main.py` in a command-line interpreter program like Windows PowerShell, or double-click the file `main.py`.  
 
+![](images/image1.png)
+![](images/image2.png)
 
 #### **Programs required:**
 - Python 3
