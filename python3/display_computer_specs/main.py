@@ -36,9 +36,24 @@ def display_RAM_info():
     print(f"Installed RAM: {installed_RAM_GB} GB (Used: {used_RAM_GB} GB. Available: {available_RAM_GB} GB)")
 
 
+def display_disk_info():
+    """ A cross-platform way to display the OS disk information on a computer"""
+
+    total_disk_space = psutil.disk_usage("/").total
+    available_disk_space = psutil.disk_usage("/").free
+    used_disk_space = psutil.disk_usage("/").used
+
+    total_disk_space_GB = convert_bytes_to_GB(total_disk_space)
+    available_disk_space_GB = convert_bytes_to_GB(available_disk_space)
+    used_disk_space_GB = convert_bytes_to_GB(used_disk_space)
+
+    print(f"Total OS disk space: {total_disk_space_GB} GB (Used: {used_disk_space_GB} GB. Available: {available_disk_space_GB} GB)")
+
+
 def main():
     display_basic_info()
     display_RAM_info()
+    display_disk_info()
 
 
 if __name__ == "__main__":
