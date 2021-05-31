@@ -1,5 +1,6 @@
 import platform
 import psutil
+import time
 
 
 def convert_bytes_to_GB(bytes_number):
@@ -12,14 +13,14 @@ def convert_bytes_to_GB(bytes_number):
 def display_basic_info():
     """ A cross-platform way to display the basic information on a computer """
 
-    print(f"Computer's network name: {platform.node()}")
-    print(f"OS name: {platform.system()}")
-    print(f"OS version: {platform.platform()}")
-    print(f"Installed Python version: {platform.python_version()}")
-    print(f"Full CPU name: {platform.processor()}")
-    print(f"Machine type: {platform.machine()}")
-    print(f"Total CPU count: {psutil.cpu_count()}") 
-    print(f"Physical CPU count: {psutil.cpu_count(logical=False)}")
+    print(f"Computer's network name: {platform.node()}\n")
+    print(f"OS name: {platform.system()}\n")
+    print(f"OS version: {platform.platform()}\n")
+    print(f"Installed Python version: {platform.python_version()}\n")
+    print(f"Full CPU name: {platform.processor()}\n")
+    print(f"Machine type: {platform.machine()}\n")
+    print(f"Total CPU count: {psutil.cpu_count()}\n") 
+    print(f"Physical CPU count: {psutil.cpu_count(logical=False)}\n")
 
 
 def display_RAM_info():
@@ -33,7 +34,7 @@ def display_RAM_info():
     available_RAM_GB = convert_bytes_to_GB(available_RAM)
     used_RAM_GB = convert_bytes_to_GB(used_RAM)
 
-    print(f"Installed RAM: {installed_RAM_GB} GB (Used: {used_RAM_GB} GB. Available: {available_RAM_GB} GB)")
+    print(f"Installed RAM: {installed_RAM_GB} GB (Used: {used_RAM_GB} GB. Available: {available_RAM_GB} GB)\n")
 
 
 def display_disk_info():
@@ -47,7 +48,7 @@ def display_disk_info():
     available_disk_space_GB = convert_bytes_to_GB(available_disk_space)
     used_disk_space_GB = convert_bytes_to_GB(used_disk_space)
 
-    print(f"Total OS disk space: {total_disk_space_GB} GB (Used: {used_disk_space_GB} GB. Available: {available_disk_space_GB} GB)")
+    print(f"Total OS disk space: {total_disk_space_GB} GB (Used: {used_disk_space_GB} GB. Available: {available_disk_space_GB} GB)\n")
 
 
 def main():
@@ -57,4 +58,7 @@ def main():
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     main()
+    print(f"Detection of computer information took: {round(time.time() - start_time, 6)} seconds!")
+    exit_confirmation = input("Press Enter key to exit...")
