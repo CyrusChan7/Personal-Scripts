@@ -1,4 +1,6 @@
-### Quickly find out the specifications of a computer so you can focus on doing what is actually important.
+### Quickly find out the specifications of a computer so you can focus on doing what is actually important.  
+  
+#### **Note: This script is built with cross-platform in mind, it supports Microsoft Windows, macOS, and most distributions of Linux.**
 
 <br/>  
 

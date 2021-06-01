@@ -1,4 +1,4 @@
-import platform
+import platform     # Native library
 import psutil
 import time
 
@@ -58,7 +58,7 @@ def main():
 
 
 if __name__ == "__main__":
-    start_time = time.time()
+    start_time = time.time()    # Used to calculate script execution time
     main()
     print(f"Detection of computer information took: {round(time.time() - start_time, 6)} seconds!")
     exit_confirmation = input("Press Enter key to exit...")
