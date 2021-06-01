@@ -1,0 +1,42 @@
+#!/bin/bash
+
+
+# Create unique names for the trash
+dir="$HOME/.trash"
+now=$(date +"%F-%H:%M:%S")
+
+# If .trash directory does not exist in home directory, create it
+if [ ! -d ~/.trash ]; then
+	echo ".trash directory does NOT currently exist in user's home directory, creating it now..."
+	mkdir ~/.trash
+fi
+
+while getopts "d:" OPTION
+do
+	case $OPTION in
+		d ) if [ -d "$2" ]; then
+			mv $2 "$dir/$2-$now"
+			echo "Directory has been successfully moved to ~/.trash, to delete files please don't use any options."
+		    else
+		    	echo "ERROR. -d option is for deleting directories only, not files."
+			exit 1
+	    	    fi ;;
+		* ) echo "ERROR. Usage: rm filename"
+			echo "Usage: rm -d dirname"
+		       exit 1 ;;
+	esac
+done
+
+# If it's just one argument then checks if it's just a normal file
+if [ "$#" == "1" ]; then
+	if [ -f "$1" ]; then
+		mv $1 "$dir/$1-$now"
+		echo "File has been successfully moved to ~/.trash, to delete directories please use the -d option."
+	else
+		echo "ERROR. Directories can only be moved to ~/.trash using the -d option."
+		exit 1
+	fi
+fi
+
+
+exit 0
