@@ -12,7 +12,7 @@
   
 **Note: To use the "real" `rm` command, type in `"rm" example_file`.**
 
-
+![](images/usage.png)
 
 
 #### **Programs required:**
