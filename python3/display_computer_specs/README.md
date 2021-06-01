@@ -2,7 +2,7 @@
 
 <br/>  
 
-  
+![](images/usage.png)
 
 #### **Usage:**
 1. Run `main.py`.
