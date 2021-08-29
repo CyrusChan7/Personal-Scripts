@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+if [ $# -eq 0 ]; then
+	echo "ERROR. You did not enter any pattern to search for in processes. Nothing will be displayed."
+	echo "Usage: script_name [name of process]"
+	exit 1
+fi
+
+
+output=$(ps -A --sort -rss -o comm,rss | grep $1 | awk '{printf "%-20.20s\t%.2f MB\n", $1, $2/1024;}');
+
+# Check if there is output for the command
+if [ -z "$output" ]; then
+	echo "ERROR: No processes match your input. There is nothing to display."
+	exit 1
+else
+	# printf "%s\t\t%s\n" "Name of process" "Memory usage (MB)"
+	echo "$output"
+fi
+
+exit 0
